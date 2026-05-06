@@ -1,17 +1,17 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('toughts2', 'root', 'lopeslopes', {
+const sequelize = new Sequelize('toughts2', 'root', 'sua_senha_aqui', {
     host: 'localhost',
     dialect: 'mysql'
 })
 
 try {
     sequelize.authenticate();
-    console.log('conectamos !!');
+    console.log('Conectamos !!');
 
 }
 catch (err) {
-    console.log(`nao foi possivel ${err}`);
+    console.log(`Não foi possivel ${err}`);
 }
 
 
