@@ -5,7 +5,6 @@
     <p>Foram encontrados <span>{{toughtsQti}}</span> Pensamentos</p>
     {{else}}
     <p>Nenhum pensamento foi encontrado para o termo <span>{{search}}</span></p>
-    <!--tudo isso para uma melhor visibilidade visual -->
     {{/if}}
     {{else}}
     <h1>Conheça alguns de nossos <span>Pensamentos</span>:</h1>
@@ -18,13 +17,13 @@
         <span>Ordenar por:</span>
         <form action="/" method="get">
             <input type="hidden" name="search" value="{{this.search}}">
-            <input type="hidden" name="order" value="new"> <!--esse cara vai ordenar pelos mais novos -->
+            <input type="hidden" name="order" value="new">
             <button type="submit"><i class="bi bi-arrow-up"></i> </button>
 
         </form>
         <form action="/" method="get">
             <input type="hidden" name="search" value="{{this.search}}">
-            <input type="hidden" name="order" value="old"> <!--esse cara vai ordenar pelos mais velhos -->
+            <input type="hidden" name="order" value="old"> 
             <button type="submit"><i class="bi bi-arrow-down"></i> </button>
         </form>
         <a href="/">Limpar</a>
@@ -32,12 +31,12 @@
 </div>
 <div class="toughts-container">
     {{#each toughts}}
-    <figure> <!--COLOCAR AS CITAÇÕES DE FORMA SEMÂNTICA //utilizamos a tag figure -->
-        <blockquote> <!-- AS CITACÕES FICAM NA TAG BLOCKQUOTE-->
+    <figure> 
+        <blockquote> 
             "{{this.title}}"
         </blockquote>
         <figcaption>por <span>{{this.User.name}}</span></figcaption>
-        <!--O NOME DO USU QUE CRIOU O PENSAMENTO FICA NA TAG FIGCAPTIO -->
+      
     </figure>
     {{/each}}
 </div>
