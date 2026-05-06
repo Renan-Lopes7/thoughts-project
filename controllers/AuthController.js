@@ -80,7 +80,7 @@ module.exports = class AuthController {
         try {
             const createdUser = await User.create(user);
 
-            //initialize session     //quando o usu se cadastrar no sistema eu ja quero logar ele
+            //initialize session    
             req.session.userid = createdUser.id
 
             req.flash('message', 'Cadastro realizado com sucesso !')
