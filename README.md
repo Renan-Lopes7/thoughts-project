@@ -58,7 +58,8 @@ Crie um banco de dados MySQL e substitua as credenciais no arquivo de configura�
 
 ### Execução
 
-````nodemon
+```
+nodemon
 ```
 
 ## 🛠️ Tecnologias
@@ -71,6 +72,3 @@ Crie um banco de dados MySQL e substitua as credenciais no arquivo de configura�
 - **Sessions** — autenticação de usuários
 - **Nodemon** — reload automático em desenvolvimento
 - **MVC** — arquitetura do projeto
-
-
-
