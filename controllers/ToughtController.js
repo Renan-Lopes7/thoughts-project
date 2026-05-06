@@ -3,8 +3,6 @@ const Tought = require('../models/Toughts');
 const User = require('../models/User');
 
 
-//vou ter que chamar um operador que me permite criar uma consulta de "like" "like" no msql e uma busca de filtro 
-//palavras que contenham oque eu busquei exemplo "tão" viram palavras que tenham então
 const { Op } = require('sequelize');
 
 
@@ -13,15 +11,15 @@ module.exports = class ToughtController {
 
         let search = ''
 
-        //verifico se chegou alguma coisa ! se chegar armazeno ela em uma variavel
+        
         if (req.query.search) {
             search = req.query.search
-        }               //se veio eu vou ter quer filtrar isso 
+        }            
 
-        let order = 'DESC'  //temos quer ver das mais novas pras mais velhas
+        let order = 'DESC'  
 
-        if (req.query.order === 'old') { //se vinher pela requisição
-            order = 'ASC' //ascendente
+        if (req.query.order === 'old') { 
+            order = 'ASC' 
         } else {
             order = 'DESC'
         }
@@ -30,16 +28,16 @@ module.exports = class ToughtController {
         const toughtsData = await Tought.findAll({
             include: User,
             where: {
-                title: { [Op.like]: `%${search}%` },  //e coloco como quero filtrar esse like as porcentagens indicam corigam palavras começo meio e fim
+                title: { [Op.like]: `%${search}%` }, 
             },
-            //pra definir isso eu posso eu tenho um atributo chamado order tbm
-            order: [["createdAt", order]] //essa coluna agente não criou mais o sequelize cria automaticamente pra gente
+           
+            order: [["createdAt", order]] 
         })
 
 
-        const toughts = toughtsData.map((result) => result.get({ plain: true })); //plain todos eles vão ser jogados no mesmo array
+        const toughts = toughtsData.map((result) => result.get({ plain: true })); 
 
-        //quantos resultados teve na busca dele
+      
         let toughtsQti = toughts.length
 
         if (toughtsQti === 0) {
@@ -53,14 +51,14 @@ module.exports = class ToughtController {
     static async dashboard(req, res) {
         const Userid = req.session.userid
 
-        const user = await User.findOne({ where: { id: Userid }, include: Tought, plain: true }) //plain pra poder vim so os dados interessantes
+        const user = await User.findOne({ where: { id: Userid }, include: Tought, plain: true }) 
 
-        //check if user exist
+        
         if (!user) {
             res.redirect('/login')
         }
 
-        //manipulação de dados pra instrair so as tarefas pensamentos // map serve pra modificar uns itens do array
+    
         const toughts = user.Toughts.map((result) => result.dataValues);
 
         let emptyToughts = false
@@ -129,7 +127,7 @@ module.exports = class ToughtController {
         const id = req.body.id
 
         const tought = {
-            title: req.body.title,     //aqui pegamos oque o usu mandou no body e colocamos em uma variavel 
+            title: req.body.title,     
         }
 
         try {
